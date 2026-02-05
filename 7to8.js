@@ -219,4 +219,225 @@ const masterBank = [
     "a": 1,
     "r": "Plasmodesmata serve the communicating function in vegetables (plants)."
   }
+  ,
+  {
+    "q": "Which type of signaling requires cells to be in direct membrane-membrane contact?",
+    "o": [
+      "Paracrine",
+      "Synaptic",
+      "Endocrine",
+      "Contact-dependent"
+    ],
+    "a": 3,
+    "r": "Contact-dependent signaling requires direct membrane-membrane contact."
+  },
+  {
+    "q": "What characterizes Paracrine signaling?",
+    "o": [
+      "Signal is distributed body-wide via bloodstream",
+      "Signal acts on neighboring cells via local mediators",
+      "Signal is transmitted along axons",
+      "Signal requires direct contact"
+    ],
+    "a": 1,
+    "r": "Paracrine signaling depends on local mediators acting on neighboring cells."
+  },
+  {
+    "q": "Why do some cell responses, like changes in cell differentiation, take a long time (minutes to hours)?",
+    "o": [
+      "They involve changes in gene expression and new protein synthesis",
+      "They only involve altering existing protein function",
+      "The signal travels slowly",
+      "The receptors are slow to bind"
+    ],
+    "a": 0,
+    "r": "Slow responses typically involve changes in gene expression and synthesis of new proteins."
+  },
+  {
+    "q": "Where do hydrophobic signal molecules like steroid hormones typically bind?",
+    "o": [
+      "Cell-surface receptors",
+      "Intracellular receptors (cytosol or nucleus)",
+      "Ion channels",
+      "Extracellular matrix"
+    ],
+    "a": 1,
+    "r": "Hydrophobic molecules cross the membrane and bind intracellular receptors."
+  },
+  {
+    "q": "What is the mechanism of action of Nitric Oxide (NO) in smooth muscle relaxation?",
+    "o": [
+      "It binds to cell surface receptors",
+      "It opens calcium channels directly",
+      "It diffuses into cells and activates Guanylyl Cyclase to produce cGMP",
+      "It activates Adenylyl Cyclase"
+    ],
+    "a": 2,
+    "r": "NO diffuses into smooth muscle cells and activates guanylyl cyclase."
+  },
+  {
+    "q": "Which class of cell-surface receptors mediates rapid synaptic signaling?",
+    "o": [
+      "G-Protein-Coupled Receptors (GPCRs)",
+      "Enzyme-Coupled Receptors",
+      "Ion-Channel-Coupled Receptors",
+      "Nuclear Receptors"
+    ],
+    "a": 2,
+    "r": "Ion-channel-coupled receptors mediate rapid synaptic signaling."
+  },
+  {
+    "q": "How many transmembrane domains does a GPCR typically have?",
+    "o": [
+      "1",
+      "3",
+      "7",
+      "12"
+    ],
+    "a": 2,
+    "r": "GPCRs are 7-transmembrane receptors."
+  },
+  {
+    "q": "Which subunit of the trimeric G-protein binds GTP/GDP?",
+    "o": [
+      "Alpha",
+      "Beta",
+      "Gamma",
+      "Beta-Gamma complex"
+    ],
+    "a": 0,
+    "r": "The Alpha subunit binds GDP (inactive) or GTP (active)."
+  },
+  {
+    "q": "What is the function of a Guanine Nucleotide Exchange Factor (GEF)?",
+    "o": [
+      "Hydrolyzes GTP to GDP",
+      "Phosphorylates the protein",
+      "Stimulates release of GDP and uptake of GTP (Activates)",
+      "Degrades the G-protein"
+    ],
+    "a": 2,
+    "r": "GEFs activate the protein by stimulating GDP release and GTP uptake."
+  },
+  {
+    "q": "Which enzyme converts ATP to Cyclic AMP (cAMP)?",
+    "o": [
+      "Phosphodiesterase",
+      "Adenylyl Cyclase",
+      "Guanylyl Cyclase",
+      "Protein Kinase A"
+    ],
+    "a": 1,
+    "r": "Adenylyl Cyclase synthesizes cAMP from ATP."
+  },
+  {
+    "q": "Which enzyme primarily degrades cAMP?",
+    "o": [
+      "Adenylyl Cyclase",
+      "cAMP Phosphodiesterase",
+      "Protein Kinase A",
+      "Phospholipase C"
+    ],
+    "a": 1,
+    "r": "cAMP Phosphodiesterase degrades cAMP to 5'-AMP."
+  },
+  {
+    "q": "Active Protein Kinase A (PKA) can translocate to the nucleus to phosphorylate which transcription regulator?",
+    "o": [
+      "Ras",
+      "CREB",
+      "STAT",
+      "NFkB"
+    ],
+    "a": 1,
+    "r": "PKA phosphorylates CREB (cAMP Response Element Binding protein)."
+  },
+  {
+    "q": "Phospholipase C-beta (PLC) cleaves PIP2 into which two second messengers?",
+    "o": [
+      "cAMP and cGMP",
+      "IP3 and Diacylglycerol (DAG)",
+      "Ca2+ and Calmodulin",
+      "Ras and Raf"
+    ],
+    "a": 1,
+    "r": "PLC cleaves PIP2 into IP3 (soluble) and DAG (membrane-bound)."
+  },
+  {
+    "q": "What is the primary function of IP3 (Inositol 1,4,5-trisphosphate)?",
+    "o": [
+      "Activates Protein Kinase C",
+      "Opens Ca2+ channels in the ER membrane",
+      "Binds to DNA",
+      "Activates PKA"
+    ],
+    "a": 1,
+    "r": "IP3 triggers Ca2+ release from the Endoplasmic Reticulum."
+  },
+  {
+    "q": "Which protein acts as a major intracellular Calcium sensor?",
+    "o": [
+      "Tubulin",
+      "Calmodulin",
+      "Actin",
+      "Myosin"
+    ],
+    "a": 1,
+    "r": "Calmodulin binds Ca2+ and activates other proteins like CaM-kinases."
+  },
+  {
+    "q": "How are Receptor Tyrosine Kinases (RTKs) typically activated?",
+    "o": [
+      "By binding G-proteins",
+      "By dimerization and cross-phosphorylation",
+      "By opening ion channels",
+      "By entering the nucleus"
+    ],
+    "a": 1,
+    "r": "Ligand binding causes dimerization and cross-phosphorylation of the kinase domains."
+  },
+  {
+    "q": "Which monomeric GTPase is commonly activated by RTKs and initiates the MAP Kinase module?",
+    "o": [
+      "Ran",
+      "Rab",
+      "Ras",
+      "Rho"
+    ],
+    "a": 2,
+    "r": "Ras is a key mediator activated by RTKs (via adaptors like Grb2/Sos)."
+  },
+  {
+    "q": "The JAK-STAT pathway is primarily associated with which type of receptors?",
+    "o": [
+      "GPCRs",
+      "Cytokine Receptors",
+      "Nuclear Receptors",
+      "Ion Channels"
+    ],
+    "a": 1,
+    "r": "Cytokine receptors associate with JAKs to activate STATs."
+  },
+  {
+    "q": "Which transcription factor is held inactive in the cytoplasm by I-kappa-B relative to inflammatory responses?",
+    "o": [
+      "p53",
+      "NF-kappa-B",
+      "CREB",
+      "Smad"
+    ],
+    "a": 1,
+    "r": "NF-kappa-B is released from inhibition to trigger inflammatory gene expression."
+  },
+  {
+    "q": "Nuclear receptors, when activated by ligand, function as:",
+    "o": [
+      "Protein Kinases",
+      "Transcription Regulators",
+      "Ion Channels",
+      "Second Messengers"
+    ],
+    "a": 1,
+    "r": "Nuclear receptors act as transcription regulators binding to specific DNA sequences."
+  }
 ];
