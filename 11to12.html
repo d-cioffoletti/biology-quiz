@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chapters 11-12 Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 min-h-screen text-slate-800">
+    <div class="max-w-3xl mx-auto px-4 py-8">
+      <!-- Header -->
+      <header class="mb-8 text-center">
+        <h1 class="text-3xl font-bold text-slate-900 mb-2">
+          Chapters 11-12 Quiz
+        </h1>
+        <p class="text-slate-600">
+          Cell Cycle Control, Apoptosis, DNA Replication & Expression
+        </p>
+      </header>
+
+      <!-- Quiz Container -->
+      <main id="quiz-container" class="space-y-6">
+        <!-- Progress Bar -->
+        <div class="w-full bg-slate-200 rounded-full h-2.5 mb-6">
+          <div
+            id="progress-bar"
+            class="bg-emerald-600 h-2.5 rounded-full transition-all duration-300"
+            style="width: 0%"
+          ></div>
+        </div>
+
+        <!-- Stats -->
+        <div
+          class="flex justify-between text-sm font-medium text-slate-500 mb-4"
+        >
+          <span id="question-tracker">Question 1 of 0</span>
+          <span id="score-tracker">Score: 0</span>
+        </div>
+
+        <!-- Question Card -->
+        <div
+          id="question-card"
+          class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8"
+        >
+          <h2
+            id="question-text"
+            class="text-xl font-semibold text-slate-800 mb-6"
+          >
+            <!-- Question goes here -->
+          </h2>
+
+          <div id="options-container" class="space-y-3">
+            <!-- Options go here -->
+          </div>
+        </div>
+
+        <!-- Feedback/Next Button -->
+        <div id="feedback-area" class="hidden mt-6">
+          <div
+            id="feedback-message"
+            class="p-4 rounded-xl mb-4 text-sm font-medium"
+          ></div>
+          <button
+            id="next-btn"
+            class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-6 rounded-xl transition-colors duration-200"
+          >
+            Next Question
+          </button>
+        </div>
+      </main>
+
+      <!-- Results Container (Hidden initially) -->
+      <div id="results-container" class="hidden text-center space-y-6">
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+          <div class="text-6xl mb-4">🎉</div>
+          <h2 class="text-3xl font-bold text-slate-900 mb-2">Quiz Complete!</h2>
+          <p class="text-slate-600 mb-6">Here's how you did:</p>
+
+          <div class="text-5xl font-bold text-emerald-600 mb-2">
+            <span id="final-score">0</span>%
+          </div>
+          <p id="final-stats" class="text-slate-500 mb-8"></p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              onclick="location.reload()"
+              class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 rounded-xl transition-colors"
+            >
+              Retake Quiz
+            </button>
+            <a
+              href="index.html"
+              class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-3 px-8 rounded-xl transition-colors"
+            >
+              Back to Dashboard
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Load Data -->
+    <script src="11to12.js"></script>
+    <script src="components.js"></script>
+
+    <!-- Quiz Logic -->
+    <script>
+      // Game State
+      let currentQuestionIndex = 0;
+      let score = 0;
+      let questions = [];
+
+      // DOM Elements
+      const quizContainer = document.getElementById("quiz-container");
+      const resultsContainer = document.getElementById("results-container");
+      const questionText = document.getElementById("question-text");
+      const optionsContainer = document.getElementById("options-container");
+      const feedbackArea = document.getElementById("feedback-area");
+      const feedbackMessage = document.getElementById("feedback-message");
+      const nextBtn = document.getElementById("next-btn");
+      const progressBar = document.getElementById("progress-bar");
+      const questionTracker = document.getElementById("question-tracker");
+      const scoreTracker = document.getElementById("score-tracker");
+      const finalScore = document.getElementById("final-score");
+      const finalStats = document.getElementById("final-stats");
+
+      // Initialize
+      function init() {
+        addBackButton(); // From components.js
+
+        // Shuffle questions from masterBank
+        if (typeof masterBank !== "undefined" && masterBank.length > 0) {
+          questions = [...masterBank].sort(() => Math.random() - 0.5);
+          showQuestion();
+        } else {
+          questionText.textContent = "Error: Question bank not loaded.";
+        }
+      }
+
+      function showQuestion() {
+        const q = questions[currentQuestionIndex];
+
+        // Update UI
+        questionText.textContent = q.q;
+        optionsContainer.innerHTML = "";
+        feedbackArea.classList.add("hidden");
+
+        // Update Progress
+        const progress = (currentQuestionIndex / questions.length) * 100;
+        progressBar.style.width = `${progress}%`;
+        questionTracker.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+        scoreTracker.textContent = `Score: ${score}`;
+
+        // Create Options
+        q.o.forEach((opt, index) => {
+          const btn = document.createElement("button");
+          btn.className = `w-full text-left p-4 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 transition-all duration-200 group flex items-start`;
+          btn.innerHTML = `
+            <span class="w-6 h-6 flex-shrink-0 flex items-center justify-center bg-slate-100 text-slate-500 rounded-full text-xs font-bold mr-3 group-hover:bg-emerald-100 group-hover:text-emerald-600 transition-colors">
+              ${String.fromCharCode(65 + index)}
+            </span>
+            <span class="text-slate-700">${opt}</span>
+          `;
+          btn.onclick = () => handleAnswer(index, btn);
+          optionsContainer.appendChild(btn);
+        });
+      }
+
+      function handleAnswer(selectedIndex, btn) {
+        // Disable all buttons
+        const allBtns = optionsContainer.querySelectorAll("button");
+        allBtns.forEach((b) => (b.disabled = true));
+
+        const correctIndex = questions[currentQuestionIndex].a;
+        const isCorrect = selectedIndex === correctIndex;
+
+        // Visual feedback on buttons
+        if (isCorrect) {
+          btn.classList.remove(
+            "border-slate-200",
+            "hover:border-emerald-500",
+            "hover:bg-emerald-50",
+          );
+          btn.classList.add(
+            "bg-emerald-100",
+            "border-emerald-500",
+            "text-emerald-800",
+          );
+          score++;
+        } else {
+          btn.classList.remove(
+            "border-slate-200",
+            "hover:border-emerald-500",
+            "hover:bg-emerald-50",
+          );
+          btn.classList.add("bg-rose-100", "border-rose-500", "text-rose-800");
+
+          // Highlight correct answer
+          const correctBtn = allBtns[correctIndex];
+          correctBtn.classList.remove("border-slate-200");
+          correctBtn.classList.add(
+            "bg-emerald-100",
+            "border-emerald-500",
+            "text-emerald-800",
+          );
+        }
+
+        // Show rationale
+        feedbackArea.classList.remove("hidden");
+        feedbackMessage.className = `p-4 rounded-xl mb-4 text-sm font-medium ${
+          isCorrect
+            ? "bg-emerald-100 text-emerald-800"
+            : "bg-rose-100 text-rose-800"
+        }`;
+        feedbackMessage.innerHTML = `
+          <strong>${isCorrect ? "Correct!" : "Incorrect."}</strong> 
+          ${questions[currentQuestionIndex].r || ""}
+        `;
+
+        // Scroll to feedback
+        feedbackArea.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+
+      nextBtn.onclick = () => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+          showQuestion();
+        } else {
+          showResults();
+        }
+      };
+
+      function showResults() {
+        quizContainer.classList.add("hidden");
+        resultsContainer.classList.remove("hidden");
+
+        const percentage = Math.round((score / questions.length) * 100);
+        finalScore.textContent = percentage;
+        finalStats.textContent = `You got ${score} out of ${questions.length} questions correct.`;
+      }
+
+      // Start the quiz
+      init();
+    </script>
+  </body>
+</html>
